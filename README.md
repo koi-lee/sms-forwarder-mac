@@ -70,6 +70,6 @@ open dist/WIFI转发宝串口助手.app
 - 作者：[koi-lee](https://github.com/koi-lee)
 - 星岸 AI：[starshoreai.com](https://www.starshoreai.com)
 - 产品反馈：[星岸 AI 反馈入口](https://www.starshoreai.com/feedback)
-- 联系邮箱：hello@starshoreai.com
+- 联系邮箱：service@starshoreai.com
 
 配置说明参考用户提供的 WIFI 转发宝说明书及其渠道教程，来源保留在教程中。本项目不代表硬件商家、运营商或 Bark 官方。仅连接和调试你有权使用的设备。

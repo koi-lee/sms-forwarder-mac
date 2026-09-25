@@ -10,4 +10,4 @@ The Mac app currently has no network upload or telemetry implementation. Hardwar
 
 Build locally with `./build-app.sh`. Distribution is planned through GitHub Releases. Signing and notarization are separate release gates. No open-source license has been selected yet.
 
-Author: https://github.com/koi-lee · Contact: hello@starshoreai.com
+Author: https://github.com/koi-lee · Contact: service@starshoreai.com
