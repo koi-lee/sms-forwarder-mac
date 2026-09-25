@@ -14,6 +14,19 @@ struct WiFiForwarderSerialApp: App {
         .windowStyle(.titleBar)
         .commands {
             CommandGroup(replacing: .newItem) { }
+            CommandGroup(replacing: .help) {
+                Link("联系支持：service@starshoreai.com", destination: URL(string: "mailto:service@starshoreai.com")!)
+                Link("作者 GitHub 主页", destination: URL(string: "https://github.com/koi-lee")!)
+                Link("使用教程（飞书）", destination: URL(string: "https://my.feishu.cn/docx/Vzl2dnYp8oK08lxSAUhcU9kInpf")!)
+            }
+            CommandGroup(replacing: .appInfo) {
+                Button("关于 WIFI 转发宝串口助手") {
+                    NSApplication.shared.orderFrontStandardAboutPanel(options: [
+                        .applicationName: "WIFI 转发宝串口助手",
+                        .credits: NSAttributedString(string: "星岸 AI · SMS Forwarder Mac\n支持邮箱：service@starshoreai.com\nGitHub：https://github.com/koi-lee\n仅支持已适配固件；原始日志可能包含隐私信息。")
+                    ])
+                }
+            }
         }
     }
 }

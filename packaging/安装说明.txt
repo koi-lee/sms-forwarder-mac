@@ -1,0 +1,14 @@
+SMS Forwarder Mac 0.1.0（Build 2）内部预览
+
+将 WIFI转发宝串口助手.app 拖到 Applications 安装。
+要求 macOS 13 或更新版本。Universal：Apple Silicon / Intel，Intel 尚未真机验收。
+
+此包使用 ZEAN LI 的 Developer ID 签名，尚未完成 Apple 公证，仅供作者内部验证。
+如 macOS 阻止打开，请记录提示，不建议关闭 Gatekeeper 或移除系统安全保护。
+
+连接已知设备时使用 USB 数据线，核对串口与波特率后连接并监听。
+原始日志可能包含手机号、短信正文和密钥，分享前请脱敏。
+联系：service@starshoreai.com
+
+作者 GitHub：https://github.com/koi-lee
+App 菜单“帮助”可打开教程和联系入口。
