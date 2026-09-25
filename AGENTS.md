@@ -1,0 +1,7 @@
+# SMS Forwarder Mac
+
+Read README.md and docs/项目状态与交接.md before changes. SwiftUI macOS app, no third-party runtime dependencies. Build with ./build-app.sh. Never connect or send commands to unknown serial hardware automatically.
+
+Repository stays private until the user explicitly approves public release. Never commit original screenshots, serial logs, PDU payloads, passwords, notification tokens, certificates, or local build caches. Use sanitized tutorial images only.
+
+Stationary distribution identity: Developer ID Application: ZEAN LI (4BHPD976HX). A successful build or signature is not Apple notarization or physical-device acceptance. Keep these states separate.
