@@ -1,10 +1,14 @@
 # SMS Forwarder Mac · WIFI 转发宝串口助手
 
+[简体中文](README.md) · [English](docs/README.en.md) · [日本語](docs/README.ja.md) · [한국어](docs/README.ko.md) · [Français](docs/README.fr.md) · [Español](docs/README.es.md)
+
 在 Mac 上通过 USB 查看短信转发设备的短信、运行日志和推送结果，无需安装 Windows 虚拟机。
 
 Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS records, device logs and notification delivery logs over USB.
 
 ![应用图标](Resources/AppIcon-source.png)
+
+以上六种语言覆盖仓库介绍文档；App 界面及详细教程目前为中文。
 
 ## 当前状态
 
@@ -51,7 +55,6 @@ Bark 已有本次真实设备接收验证。飞书、钉钉、企业微信、邮
 - [脱敏配置截图](docs/tutorial/截图归档.md)
 - [隐私说明](docs/隐私与来源.md)
 - [构建与发布](docs/构建与发布.md)
-- [English overview](docs/README.en.md)
 - [Agent 入口与边界](llms.txt)
 
 ## 本地构建
