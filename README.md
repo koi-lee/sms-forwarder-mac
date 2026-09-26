@@ -16,6 +16,12 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 面向使用 WIFI 转发宝、短信宝类设备的 Mac 用户。短信结构化解析按本次设备固件的串口输出适配；不保证所有同类硬件兼容。
 
+## Windows 用户
+
+Windows 用户可打开[设备说明书中的串口工具入口](https://my.feishu.cn/docx/QgfudtgpPobjvsxliVlcDkR9nod)，在“4.1 硬件准备”的“串口工具”一行查找附件 `my_uart_V2.1.rar`。
+
+该 Windows 工具由设备提供方提供与维护，本项目仅收录获取入口，不托管安装包，也未验证其运行与兼容性。飞书页面或附件可能需要登录及访问权限；无法打开时，请联系设备卖家获取。
+
 ## 能做什么
 
 - 扫描 macOS 串口，按 USB 信息提示“可能是短信宝（ESP32）”，保留完整端口名供核对。

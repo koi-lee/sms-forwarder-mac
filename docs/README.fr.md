@@ -8,6 +8,12 @@ Un moniteur de port série natif pour macOS, destiné aux appareils de transfert
 
 La version 0.1.0 est un aperçu privé. Aucun téléchargement public n’est encore proposé ; la distribution est prévue via GitHub Releases. Aucune licence open source n’a été choisie. Les six langues concernent la présentation du dépôt. L’interface de l’application et les tutoriels détaillés sont actuellement en chinois.
 
+## Pour Windows
+
+Consultez le [manuel de l’appareil](https://my.feishu.cn/docx/QgfudtgpPobjvsxliVlcDkR9nod) : le fichier `my_uart_V2.1.rar` se trouve dans la ligne « 串口工具 » de la section « 4.1 硬件准备 ».
+
+Cet outil Windows est fourni et maintenu par le fournisseur de l’appareil. Ce projet propose uniquement le lien, sans héberger le fichier ni vérifier son fonctionnement ou sa compatibilité. Feishu peut exiger une connexion ou une autorisation d’accès. En cas de difficulté, contactez le vendeur de votre appareil.
+
 ## Fonctionnalités
 
 - Détection des ports série et indication des appareils potentiellement équipés d’un ESP32 à partir des informations USB. Cette indication ne garantit pas la compatibilité.

@@ -8,6 +8,12 @@ A native macOS serial monitor for SMS forwarding devices. Connect via USB to ins
 
 Version 0.1.0 is a private preview. Public downloads are not available yet; distribution is planned through GitHub Releases. No open-source license has been selected. These six languages cover repository introductions; the app interface and detailed tutorials are currently in Chinese.
 
+## Windows users
+
+Open the [device manual](https://my.feishu.cn/docx/QgfudtgpPobjvsxliVlcDkR9nod) and look for `my_uart_V2.1.rar` in the “串口工具” row under “4.1 硬件准备”.
+
+The Windows tool is supplied and maintained by the device provider. This project only links to it; it does not host the package or verify its operation or compatibility. Feishu may require sign-in or access permission. Contact your device seller if you cannot access it.
+
 ## Features
 
 - Discover serial ports, with a USB-based hint for possible ESP32 devices. The hint does not guarantee compatibility.

@@ -8,6 +8,12 @@ Un monitor de puerto serie nativo para macOS, pensado para dispositivos de reenv
 
 La versión 0.1.0 es una versión preliminar privada. Todavía no hay descargas públicas; se prevé distribuirla mediante GitHub Releases. Aún no se ha elegido una licencia de código abierto. Los seis idiomas corresponden a la presentación del repositorio. La interfaz de la aplicación y los tutoriales detallados están actualmente en chino.
 
+## Para usuarios de Windows
+
+Abre el [manual del dispositivo](https://my.feishu.cn/docx/QgfudtgpPobjvsxliVlcDkR9nod) y busca el archivo adjunto `my_uart_V2.1.rar` en la fila «串口工具» de la sección «4.1 硬件准备».
+
+El proveedor del dispositivo ofrece y mantiene esta herramienta para Windows. Este proyecto solo incluye el enlace; no aloja el archivo ni ha verificado su funcionamiento o compatibilidad. Feishu puede requerir iniciar sesión o tener permiso de acceso. Si no puedes abrirlo, contacta con el vendedor del dispositivo.
+
 ## Funciones
 
 - Detección de puertos serie e indicación de posibles dispositivos ESP32 a partir de la información USB. Esta indicación no garantiza la compatibilidad.
