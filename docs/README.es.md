@@ -6,7 +6,7 @@ Un monitor de puerto serie nativo para macOS, pensado para dispositivos de reenv
 
 ## Disponibilidad e idiomas
 
-La versión 0.1.0 es una versión preliminar privada. Todavía no hay descargas públicas; se prevé distribuirla mediante GitHub Releases. Aún no se ha elegido una licencia de código abierto. Los seis idiomas corresponden a la presentación del repositorio. La interfaz de la aplicación y los tutoriales detallados están actualmente en chino.
+La versión 0.1.0 es una versión preliminar privada. Todavía no hay descargas públicas; se prevé distribuirla mediante GitHub Releases. El código usa la [licencia MIT](../LICENSE); la publicación está pendiente de la revisión final. Los seis idiomas corresponden a la presentación del repositorio. La interfaz de la aplicación y los tutoriales detallados están actualmente en chino.
 
 ## Para usuarios de Windows
 

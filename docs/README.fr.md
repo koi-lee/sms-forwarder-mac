@@ -6,7 +6,7 @@ Un moniteur de port série natif pour macOS, destiné aux appareils de transfert
 
 ## Disponibilité et langues
 
-La version 0.1.0 est un aperçu privé. Aucun téléchargement public n’est encore proposé ; la distribution est prévue via GitHub Releases. Aucune licence open source n’a été choisie. Les six langues concernent la présentation du dépôt. L’interface de l’application et les tutoriels détaillés sont actuellement en chinois.
+La version 0.1.0 est un aperçu privé. Aucun téléchargement public n’est encore proposé ; la distribution est prévue via GitHub Releases. Le code est sous [licence MIT](../LICENSE) ; la publication attend la validation finale. Les six langues concernent la présentation du dépôt. L’interface de l’application et les tutoriels détaillés sont actuellement en chinois.
 
 ## Pour Windows
 

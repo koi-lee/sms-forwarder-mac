@@ -12,7 +12,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 ## 当前状态
 
-0.1.0 内部预览，仓库保持私有，尚未公开下载。计划通过 GitHub Releases 分发，不依赖 Mac App Store。是否开源及许可证待作者确认，当前不授予公开再分发许可。
+0.1.0 内部预览，仓库保持私有，尚未公开下载。计划通过 GitHub Releases 分发，不依赖 Mac App Store。作者已决定开源，项目代码采用 [MIT License](LICENSE)。仓库公开与下载发布仍待最终审核。
 
 面向使用 WIFI 转发宝、短信宝类设备的 Mac 用户。短信结构化解析按本次设备固件的串口输出适配；不保证所有同类硬件兼容。
 
@@ -45,6 +45,8 @@ Windows 用户可打开[设备说明书中的串口工具入口](https://my.feis
 | 历史记录 | 短信卡片保存在本次运行内存中，退出不会保留；日志需主动保存 |
 
 Bark 已有本次真实设备接收验证。飞书、钉钉、企业微信、邮件、Telegram 等是设备固件的推送渠道，教程收录不代表本 App 已逐一实测或独立实现推送。串口显示“推送成功”也不能代替手机实际收到通知的确认。
+
+安装包下载与系统拦截处理见[完整安装教程](docs/下载安装.md)。
 
 ## 开始使用
 

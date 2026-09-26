@@ -6,7 +6,7 @@ A native macOS serial monitor for SMS forwarding devices. Connect via USB to ins
 
 ## Status and language support
 
-Version 0.1.0 is a private preview. Public downloads are not available yet; distribution is planned through GitHub Releases. No open-source license has been selected. These six languages cover repository introductions; the app interface and detailed tutorials are currently in Chinese.
+Version 0.1.0 is a private preview. Public downloads are not available yet; distribution is planned through GitHub Releases. The project code is licensed under the [MIT License](../LICENSE); public release awaits final review. These six languages cover repository introductions; the app interface and detailed tutorials are currently in Chinese.
 
 ## Windows users
 
