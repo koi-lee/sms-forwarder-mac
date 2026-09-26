@@ -4,6 +4,8 @@
 
 Un moniteur de port série natif pour macOS, destiné aux appareils de transfert de SMS. Connectez l’appareil en USB pour consulter les SMS pris en charge, les journaux et les résultats d’envoi des notifications, sans machine virtuelle Windows.
 
+[Installation et premier SMS (en chinois)](快速上手.md) · [DMG / macOS](下载安装.md)
+
 ## Disponibilité et langues
 
 La version 0.1.0 est un aperçu privé. Aucun téléchargement public n’est encore proposé ; la distribution est prévue via GitHub Releases. Le code est sous [licence MIT](../LICENSE) ; la publication attend la validation finale. Les six langues concernent la présentation du dépôt. L’interface de l’application et les tutoriels détaillés sont actuellement en chinois.

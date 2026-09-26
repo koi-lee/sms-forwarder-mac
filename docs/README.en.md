@@ -4,6 +4,8 @@
 
 A native macOS serial monitor for SMS forwarding devices. Connect via USB to inspect supported SMS records, device logs and notification delivery logs without a Windows virtual machine.
 
+[Installation and first SMS (Chinese)](快速上手.md) · [DMG / macOS](下载安装.md)
+
 ## Status and language support
 
 Version 0.1.0 is a private preview. Public downloads are not available yet; distribution is planned through GitHub Releases. The project code is licensed under the [MIT License](../LICENSE); public release awaits final review. These six languages cover repository introductions; the app interface and detailed tutorials are currently in Chinese.

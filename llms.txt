@@ -9,3 +9,7 @@ Native macOS serial monitor for SMS forwarding devices; Chinese name: WIFI 转�
 - [Status](docs/项目状态与交接.md): implementation, build and release status.
 
 Repository introductions: [日本語](docs/README.ja.md), [한국어](docs/README.ko.md), [Français](docs/README.fr.md), [Español](docs/README.es.md). The app UI and detailed tutorials remain Chinese.
+
+- [Install](docs/下载安装.md): Chinese DMG and Gatekeeper guide; Developer ID signed, not yet notarized preview, private draft assets.
+- [First SMS](docs/快速上手.md): prerequisites, serial selection, phone-to-device SMS verification and troubleshooting.
+- [License](LICENSE): MIT for project code; third-party assets retain their own rights.

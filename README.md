@@ -6,7 +6,7 @@
 
 Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS records, device logs and notification delivery logs over USB.
 
-![应用图标](Resources/AppIcon-source.png)
+<img src="Resources/AppIcon-source.png" alt="应用图标" width="128">
 
 以上六种语言覆盖仓库介绍文档；App 界面及详细教程目前为中文。
 
@@ -16,11 +16,15 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 面向使用 WIFI 转发宝、短信宝类设备的 Mac 用户。短信结构化解析按本次设备固件的串口输出适配；不保证所有同类硬件兼容。
 
-## Windows 用户
+## 开始使用
 
-Windows 用户可打开[设备说明书中的串口工具入口](https://my.feishu.cn/docx/QgfudtgpPobjvsxliVlcDkR9nod)，在“4.1 硬件准备”的“串口工具”一行查找附件 `my_uart_V2.1.rar`。
+你需要一台 Mac、一台有收短信功能的转发设备、已启用短信服务的 SIM 卡，以及支持数据传输的 USB 线。本软件用于查看设备输出，不能让没有短信硬件的 Mac 独立接收短信。
 
-该 Windows 工具由设备提供方提供与维护，本项目仅收录获取入口，不托管安装包，也未验证其运行与兼容性。飞书页面或附件可能需要登录及访问权限；无法打开时，请联系设备卖家获取。
+1. [下载并安装](docs/下载安装.md)：选择 Build 2 的 DMG；普通使用无需 Xcode。
+2. [按步骤连接并验证第一条短信](docs/快速上手.md)：包括如何认串口、短信发给谁、在哪里看结果。
+3. 遇到问题按[使用与排查](docs/使用与排查.md)中的现象定位。
+
+新设备尚未配网或配置推送时，先按设备说明书完成配置，再开始串口验证。已正常收到 Bark 推送的设备可直接连接。配置入口与验证范围见[推送渠道教程](docs/tutorial/推送渠道教程.md)。
 
 ## 能做什么
 
@@ -48,14 +52,6 @@ Bark 已有本次真实设备接收验证。飞书、钉钉、企业微信、邮
 
 安装包下载与系统拦截处理见[完整安装教程](docs/下载安装.md)。
 
-## 开始使用
-
-1. 用支持数据传输的 USB 线将设备接入 Mac，关闭其他占用该串口的软件。
-2. 刷新设备列表，核对端口；推荐标签只是 USB 芯片识别提示。多设备同时连接时可通过拔插对照。
-3. 按设备说明选择波特率，本次设备使用 `115200`，点击“连接并监听”。
-4. 向设备 SIM 卡发送一条测试短信，查看短信卡片和推送日志，并在手机端确认通知。
-5. 需要排查时点击“保存日志…”。完成后断开串口；设备日常转发只需供电和网络，不要求一直连接 Mac。
-
 ## 教程
 
 - [串口、波特率、HEX、CRLF 入门](docs/使用与排查.md)
@@ -65,7 +61,13 @@ Bark 已有本次真实设备接收验证。飞书、钉钉、企业微信、邮
 - [构建与发布](docs/构建与发布.md)
 - [Agent 入口与边界](llms.txt)
 
-## 本地构建
+## Windows 用户
+
+Windows 用户可打开[设备说明书中的串口工具入口](https://my.feishu.cn/docx/QgfudtgpPobjvsxliVlcDkR9nod)，在“4.1 硬件准备”的“串口工具”一行查找附件 `my_uart_V2.1.rar`。
+
+该 Windows 工具由设备提供方提供与维护，本项目仅收录获取入口，不托管安装包，也未验证其运行与兼容性。飞书页面或附件可能需要登录及访问权限；无法打开时，请联系设备卖家获取。
+
+## 本地构建（开发者）
 
 需要 Xcode 及其 macOS SDK：
 
