@@ -51,3 +51,17 @@ open dist/WIFI转发宝串口助手.app
 - [Starshore AI](https://www.starshoreai.com)
 
 사용 권한이 있는 장치만 연결하세요. 로그를 공유하기 전에 전화번호, 메시지 내용, 비밀번호, 알림 키를 가려 주세요. 이 프로젝트는 하드웨어 판매자, 통신사 또는 Bark와 제휴 관계가 없습니다.
+
+## 커피 한 잔으로 응원하기
+
+이 작은 도구가 시간을 아끼는 데 도움이 됐다면, 커피 한 잔으로 다음 업데이트를 응원해 주세요. 금액은 자유입니다.
+
+부담 갖지 않으셔도 됩니다. Star, 개선 제안, 필요한 분께 소개해 주시는 것도 큰 힘이 됩니다. 감사합니다!
+
+<table>
+  <tr><th>Alipay</th><th>WeChat Pay</th></tr>
+  <tr>
+    <td><img src="assets/support/alipay.jpg" alt="Alipay" width="220"></td>
+    <td><img src="assets/support/wechat-pay.jpg" alt="WeChat Pay" width="220"></td>
+  </tr>
+</table>

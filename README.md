@@ -76,3 +76,17 @@ open dist/WIFI转发宝串口助手.app
 - 联系邮箱：service@starshoreai.com
 
 配置说明参考用户提供的 WIFI 转发宝说明书及其渠道教程，来源保留在教程中。本项目不代表硬件商家、运营商或 Bark 官方。仅连接和调试你有权使用的设备。
+
+## 请我喝杯咖啡
+
+如果这个小工具帮你省了点时间，欢迎请我喝杯咖啡，支持我继续更新。金额随意，心意收到就很开心。
+
+不打赏也没关系，点个 Star、提个建议，或者推荐给需要的朋友，同样是支持。谢谢你！
+
+<table>
+  <tr><th>支付宝</th><th>微信支付</th></tr>
+  <tr>
+    <td><img src="docs/assets/support/alipay.jpg" alt="支付宝" width="220"></td>
+    <td><img src="docs/assets/support/wechat-pay.jpg" alt="微信支付" width="220"></td>
+  </tr>
+</table>

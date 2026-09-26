@@ -51,3 +51,17 @@ open dist/WIFI转发宝串口助手.app
 - [Starshore AI](https://www.starshoreai.com)
 
 Utilisez uniquement des appareils auxquels vous êtes autorisé à accéder. Masquez les numéros, le contenu des messages, les mots de passe et les clés de notification avant de partager des journaux. Ce projet n’est affilié ni aux vendeurs de matériel, ni aux opérateurs, ni à Bark.
+
+## Offrez-moi un café
+
+Si ce petit outil vous a fait gagner du temps, vous pouvez m’offrir un café pour soutenir les prochaines mises à jour. Le montant est libre.
+
+Sans obligation : une étoile, une suggestion ou un partage avec une personne qui en a besoin aide aussi. Merci !
+
+<table>
+  <tr><th>Alipay</th><th>WeChat Pay</th></tr>
+  <tr>
+    <td><img src="assets/support/alipay.jpg" alt="Alipay" width="220"></td>
+    <td><img src="assets/support/wechat-pay.jpg" alt="WeChat Pay" width="220"></td>
+  </tr>
+</table>
