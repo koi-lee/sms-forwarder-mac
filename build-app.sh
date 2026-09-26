@@ -27,4 +27,9 @@ if [[ "$IDENTITY" != '-' ]]; then
   grep -F "Authority=$IDENTITY" <<< "$SIGNATURE" >/dev/null
   grep -F 'TeamIdentifier=4BHPD976HX' <<< "$SIGNATURE" >/dev/null
 fi
+# Release artifacts must not retain the developer home or build directory.
+if LC_ALL=C strings "$APP/Contents/MacOS/WIFI转发宝串口助手" | LC_ALL=C grep -E '/Users/|/Volumes/|DerivedData|Objects-normal' > /dev/null; then
+  echo 'Privacy check failed: executable contains a local build path.' >&2
+  exit 1
+fi
 echo "Built: $APP"

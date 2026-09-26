@@ -8,7 +8,7 @@ SMS 전달 장치를 위한 macOS 네이티브 시리얼 모니터입니다. USB
 
 ## 배포 상태와 언어
 
-0.1.0 (Build 3)은 미리보기 버전입니다. [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.3)에서 Developer ID 서명 및 Apple 공증을 완료한 DMG를 다운로드할 수 있습니다. 코드는 [MIT License](../LICENSE)를 사용합니다. 소개 문서는 6개 언어이며 앱과 상세 안내는 중국어입니다.
+0.1.0 (Build 4)은 미리보기 버전입니다. [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.4)에서 Developer ID 서명 및 Apple 공증을 완료한 DMG를 다운로드할 수 있습니다. 코드는 [MIT License](../LICENSE)를 사용합니다. 소개 문서는 6개 언어이며 앱과 상세 안내는 중국어입니다.
 
 ## Windows 사용자 안내
 
@@ -43,7 +43,7 @@ SMS 카드는 앱 실행 중 메모리에만 보관됩니다. 필요한 로그�
 
 ## 빌드 및 문서
 
-Xcode와 macOS SDK를 설치한 뒤 저장소 루트에서 실행하세요. 기본 빌드는 ad-hoc 서명을 사용합니다. Developer ID 서명과 Apple 공증은 별도 단계이며 배포되는 Build 3은 공증을 완료했습니다.
+Xcode와 macOS SDK를 설치한 뒤 저장소 루트에서 실행하세요. 기본 빌드는 ad-hoc 서명을 사용합니다. Developer ID 서명과 Apple 공증은 별도 단계이며 배포되는 Build 4은 공증을 완료했습니다.
 
 ```sh
 ./build-app.sh

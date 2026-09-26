@@ -8,7 +8,7 @@ Un moniteur de port série natif pour macOS, destiné aux appareils de transfert
 
 ## Disponibilité et langues
 
-La version 0.1.0 (Build 3) est une préversion. Le DMG signé Developer ID et notarié par Apple est disponible sur [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.3). Le code est sous [licence MIT](../LICENSE). Les présentations sont en six langues ; l’application et les guides détaillés sont en chinois.
+La version 0.1.0 (Build 4) est une préversion. Le DMG signé Developer ID et notarié par Apple est disponible sur [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.4). Le code est sous [licence MIT](../LICENSE). Les présentations sont en six langues ; l’application et les guides détaillés sont en chinois.
 
 ## Pour Windows
 
@@ -43,7 +43,7 @@ Les fiches SMS restent uniquement en mémoire pendant la session. Enregistrez le
 
 ## Compilation et documentation
 
-Exécutez les commandes à la racine du dépôt après avoir installé Xcode et le SDK macOS. La compilation par défaut utilise une signature ad hoc. La signature Developer ID et la notarisation Apple sont deux étapes distinctes ; le paquet Build 3 distribué est notarié.
+Exécutez les commandes à la racine du dépôt après avoir installé Xcode et le SDK macOS. La compilation par défaut utilise une signature ad hoc. La signature Developer ID et la notarisation Apple sont deux étapes distinctes ; le paquet Build 4 distribué est notarié.
 
 ```sh
 ./build-app.sh

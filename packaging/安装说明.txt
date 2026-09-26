@@ -1,10 +1,10 @@
-SMS Forwarder Mac 0.1.0（Build 3）预览版
+SMS Forwarder Mac 0.1.0（Build 4）预览版
 
 已使用 Developer ID 签名并完成 Apple 公证。
 要求 macOS 13 或更新版本；Apple Silicon / Intel 双架构，Intel 尚未真机验收。
 
 1. 先退出旧应用并保存日志，再将 WIFI转发宝串口助手.app 拖到 Applications。
-2. 从“应用程序”打开，关于窗口应显示 0.1.0 (3)。首次可能出现互联网下载确认。
+2. 从“应用程序”打开，关于窗口应显示 0.1.0 (4)。首次可能出现互联网下载确认。
 3. 阅读 INSTALL.zh-CN.md 和 QUICKSTART.zh-CN.md；Markdown 文件可用文本编辑器打开。
 
 若提示应用损坏或将损坏电脑，请停止操作并从官方 Release 重新下载、核对校验值。不要关闭系统安全保护。
