@@ -1,6 +1,6 @@
 # SMS Forwarder Mac
 
-Native macOS serial monitor for SMS forwarding devices; Chinese name: WIFI 转发宝串口助手. Private preview, not publicly released. macOS 13+. USB required for monitoring. Firmware-specific SMS parsing; not universal hardware support.
+Native macOS serial monitor for SMS forwarding devices; Chinese name: WIFI 转发宝串口助手. Open-source preview, MIT code license. macOS 13+. USB required for monitoring. Firmware-specific SMS parsing; not universal hardware support.
 
 - [Overview](README.md): capabilities and compatibility boundaries.
 - [English](docs/README.en.md): English product guide.
@@ -10,6 +10,6 @@ Native macOS serial monitor for SMS forwarding devices; Chinese name: WIFI 转�
 
 Repository introductions: [日本語](docs/README.ja.md), [한국어](docs/README.ko.md), [Français](docs/README.fr.md), [Español](docs/README.es.md). The app UI and detailed tutorials remain Chinese.
 
-- [Install](docs/下载安装.md): Chinese DMG and Gatekeeper guide; Developer ID signed, not yet notarized preview, private draft assets.
+- [Install](docs/下载安装.md): Chinese DMG and Gatekeeper guide; Build 3 is Developer ID signed and Apple-notarized.
 - [First SMS](docs/快速上手.md): prerequisites, serial selection, phone-to-device SMS verification and troubleshooting.
 - [License](LICENSE): MIT for project code; third-party assets retain their own rights.

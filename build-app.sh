@@ -6,7 +6,7 @@ EXTRA=()
 if [[ "${1:-}" == "--developer-id" ]]; then
   IDENTITY="Developer ID Application: ZEAN LI (4BHPD976HX)"
   security find-identity -v -p codesigning | grep -F "\"$IDENTITY\"" >/dev/null
-  EXTRA=(ENABLE_HARDENED_RUNTIME=YES OTHER_CODE_SIGN_FLAGS=--timestamp)
+  EXTRA=(ENABLE_HARDENED_RUNTIME=YES CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO OTHER_CODE_SIGN_FLAGS=--timestamp)
 elif [[ -n "${1:-}" ]]; then
   echo 'Usage: ./build-app.sh [--developer-id]' >&2
   exit 2

@@ -8,7 +8,7 @@ SMS 転送デバイス向けの macOS ネイティブ・シリアルモニター
 
 ## 公開状況と言語
 
-バージョン 0.1.0 は非公開のプレビュー版です。一般向けのダウンロードはまだ提供していません。GitHub Releases での配布を予定しています。コードには [MIT License](../LICENSE) を採用しています。公開は最終確認待ちです。6 言語に対応するのはリポジトリの紹介文です。アプリの画面と詳細チュートリアルは現在、中国語です。
+0.1.0 (Build 3) はプレビュー版です。[GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.3) から Developer ID 署名・Apple 公証済みの DMG を入手できます。コードは [MIT License](../LICENSE)。紹介文は6言語、アプリ画面と詳細ガイドは中国語です。
 
 ## Windows をお使いの方へ
 
@@ -43,7 +43,7 @@ SMS カードは起動中のメモリにのみ保存されます。必要なロ�
 
 ## ビルドと資料
 
-Xcode と macOS SDK をインストールし、リポジトリのルートで実行してください。既定のビルドは ad-hoc 署名です。Developer ID 署名と Apple の公証は別の手順で、公証は未実施です。
+Xcode と macOS SDK をインストールし、リポジトリのルートで実行してください。既定のビルドは ad-hoc 署名です。Developer ID 署名と Apple の公証は別の手順で、配布する Build 3 は公証済みです。
 
 ```sh
 ./build-app.sh

@@ -8,7 +8,7 @@ Un monitor de puerto serie nativo para macOS, pensado para dispositivos de reenv
 
 ## Disponibilidad e idiomas
 
-La versión 0.1.0 es una versión preliminar privada. Todavía no hay descargas públicas; se prevé distribuirla mediante GitHub Releases. El código usa la [licencia MIT](../LICENSE); la publicación está pendiente de la revisión final. Los seis idiomas corresponden a la presentación del repositorio. La interfaz de la aplicación y los tutoriales detallados están actualmente en chino.
+La versión 0.1.0 (Build 3) es preliminar. El DMG firmado con Developer ID y notarizado por Apple se descarga desde [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.3). El código usa [MIT](../LICENSE). Las presentaciones están en seis idiomas; la aplicación y las guías detalladas están en chino.
 
 ## Para usuarios de Windows
 
@@ -43,7 +43,7 @@ Las tarjetas de SMS solo se conservan en memoria durante la sesión. Guarda los 
 
 ## Compilación y documentación
 
-Ejecuta los comandos desde la raíz del repositorio con Xcode y el SDK de macOS instalados. La compilación predeterminada usa firma ad hoc. La firma Developer ID y la notarización de Apple son pasos distintos; la notarización todavía no se ha realizado.
+Ejecuta los comandos desde la raíz del repositorio con Xcode y el SDK de macOS instalados. La compilación predeterminada usa firma ad hoc. La firma Developer ID y la notarización de Apple son pasos distintos; el paquete Build 3 publicado está notarizado.
 
 ```sh
 ./build-app.sh

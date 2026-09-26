@@ -12,7 +12,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 ## 当前状态
 
-0.1.0 内部预览，仓库保持私有，尚未公开下载。计划通过 GitHub Releases 分发，不依赖 Mac App Store。作者已决定开源，项目代码采用 [MIT License](LICENSE)。仓库公开与下载发布仍待最终审核。
+0.1.0 (Build 3) 预览版，项目代码采用 [MIT License](LICENSE)。安装包使用 Developer ID 签名并完成 Apple 公证，通过 [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.3) 分发，无需 App Store。
 
 面向使用 WIFI 转发宝、短信宝类设备的 Mac 用户。短信结构化解析按本次设备固件的串口输出适配；不保证所有同类硬件兼容。
 
@@ -20,7 +20,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 你需要一台 Mac、一台有收短信功能的转发设备、已启用短信服务的 SIM 卡，以及支持数据传输的 USB 线。本软件用于查看设备输出，不能让没有短信硬件的 Mac 独立接收短信。
 
-1. [下载并安装](docs/下载安装.md)：选择 Build 2 的 DMG；普通使用无需 Xcode。
+1. [下载并安装](docs/下载安装.md)：选择 Build 3 的 DMG；普通使用无需 Xcode。
 2. [按步骤连接并验证第一条短信](docs/快速上手.md)：包括如何认串口、短信发给谁、在哪里看结果。
 3. 遇到问题按[使用与排查](docs/使用与排查.md)中的现象定位。
 

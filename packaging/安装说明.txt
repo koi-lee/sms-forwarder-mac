@@ -1,17 +1,15 @@
-SMS Forwarder Mac 0.1.0（Build 2，安装包修订 r2）预览版
+SMS Forwarder Mac 0.1.0（Build 3）预览版
 
-本修订只更新包内说明与教程，App 与已验收 Build 2 相同。
-要求 macOS 13 或更新版本；支持 Apple Silicon / Intel 架构，Intel 尚未真机验收。
+已使用 Developer ID 签名并完成 Apple 公证。
+要求 macOS 13 或更新版本；Apple Silicon / Intel 双架构，Intel 尚未真机验收。
 
-1. 将 WIFI转发宝串口助手.app 拖到 Applications（应用程序）。已有版本时先退出旧应用并保存日志。
-2. 从“应用程序”打开。关于窗口应显示 0.1.0 (2)。
-3. 打开包内 INSTALL.zh-CN.md 查看安装和系统安全提示处理，QUICKSTART.zh-CN.md 查看第一条短信步骤。Markdown 文件可用文本编辑器阅读。
+1. 先退出旧应用并保存日志，再将 WIFI转发宝串口助手.app 拖到 Applications。
+2. 从“应用程序”打开，关于窗口应显示 0.1.0 (3)。首次可能出现互联网下载确认。
+3. 阅读 INSTALL.zh-CN.md 和 QUICKSTART.zh-CN.md；Markdown 文件可用文本编辑器打开。
 
-App 使用 Developer ID 签名，尚未 Apple 公证。仅确认来自项目正式发布入口且愿意使用预览版时，在“系统设置 → 隐私与安全性”按系统提示单独允许打开。不关闭全局安全保护。出现恶意软件、将损坏电脑或文件损坏提示时停止安装并反馈。
+若提示应用损坏或将损坏电脑，请停止操作并从官方 Release 重新下载、核对校验值。不要关闭系统安全保护。
 
-使用 USB 数据线连接已知设备，按设备说明选择串口和波特率。测试短信应从手机发往设备 SIM 卡，不要在助手“手动发送”框里输入测试短信。
-日志含手机号、正文和密钥，分享前请脱敏。App 菜单中的飞书教程为设备参考；优先阅读本包快速上手。
-
+通过 USB 数据线连接设备，按其说明选择端口和波特率。测试短信从手机发往设备 SIM 卡；助手“手动发送”框用于串口指令，不是短信测试输入框。
+日志可能含手机号、正文和密钥，分享前请脱敏。
 支持：service@starshoreai.com
 项目：https://github.com/koi-lee/sms-forwarder-mac
-安装包与教程仅在仓库和 Release 正式公开后才向所有用户开放。

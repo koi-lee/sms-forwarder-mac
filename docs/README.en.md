@@ -8,7 +8,7 @@ A native macOS serial monitor for SMS forwarding devices. Connect via USB to ins
 
 ## Status and language support
 
-Version 0.1.0 is a private preview. Public downloads are not available yet; distribution is planned through GitHub Releases. The project code is licensed under the [MIT License](../LICENSE); public release awaits final review. These six languages cover repository introductions; the app interface and detailed tutorials are currently in Chinese.
+Version 0.1.0 (Build 3) is a preview. Download the Developer ID signed and Apple-notarized DMG from [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.3). The code uses the [MIT License](../LICENSE). Repository introductions are available in six languages; the app and detailed guides are in Chinese.
 
 ## Windows users
 
@@ -43,7 +43,7 @@ SMS cards exist only in memory for the current session. Save logs explicitly if 
 
 ## Build and documentation
 
-Run from the repository root with Xcode and the macOS SDK installed. The default build uses ad-hoc signing. Developer ID signing and Apple notarization are separate steps; notarization has not been completed.
+Run from the repository root with Xcode and the macOS SDK installed. The default build uses ad-hoc signing. Developer ID signing and Apple notarization are separate steps; the published Build 3 package is notarized.
 
 ```sh
 ./build-app.sh
