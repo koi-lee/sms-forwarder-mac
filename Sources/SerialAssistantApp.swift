@@ -6,15 +6,21 @@ import UniformTypeIdentifiers
 
 @main
 struct WiFiForwarderSerialApp: App {
+    @State private var showingSupport = false
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 900, minHeight: 780)
+                .sheet(isPresented: $showingSupport) {
+                    SupportView()
+                }
         }
         .windowStyle(.titleBar)
         .commands {
             CommandGroup(replacing: .newItem) { }
             CommandGroup(replacing: .help) {
+                Button("请我喝杯咖啡…") { showingSupport = true }
                 Link("联系支持：service@starshoreai.com", destination: URL(string: "mailto:service@starshoreai.com")!)
                 Link("作者 GitHub 主页", destination: URL(string: "https://github.com/koi-lee")!)
                 Link("使用教程（飞书）", destination: URL(string: "https://my.feishu.cn/docx/Vzl2dnYp8oK08lxSAUhcU9kInpf")!)
@@ -28,6 +34,60 @@ struct WiFiForwarderSerialApp: App {
                 }
             }
         }
+    }
+}
+
+private struct SupportView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("请我喝杯咖啡")
+                .font(.title2.weight(.semibold))
+            Text("如果这个工具对你有帮助，可以自愿支持作者。打赏与应用下载和功能无关，也没有固定金额。请用另一部手机扫描下方二维码。")
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            HStack(alignment: .top, spacing: 16) {
+                DonationCodeCard(title: "支付宝", resourceName: "AlipayDonation")
+                DonationCodeCard(title: "微信支付", resourceName: "WeChatDonation")
+            }
+
+            HStack {
+                Spacer()
+                Button("完成") { dismiss() }
+                    .keyboardShortcut(.defaultAction)
+            }
+        }
+        .padding(24)
+        .frame(minWidth: 720, minHeight: 560)
+    }
+}
+
+private struct DonationCodeCard: View {
+    let title: String
+    let resourceName: String
+
+    var body: some View {
+        VStack(spacing: 10) {
+            Text(title)
+                .font(.headline)
+            if let url = Bundle.main.url(forResource: resourceName, withExtension: "jpg"),
+               let image = NSImage(contentsOf: url) {
+                Image(nsImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 300, maxHeight: 390)
+                    .accessibilityLabel("\(title)打赏二维码")
+            } else {
+                Label("二维码暂不可用", systemImage: "qrcode")
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, minHeight: 260)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(14)
+        .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 14))
     }
 }
 
@@ -234,6 +294,7 @@ final class SerialModel: ObservableObject {
     private let queue = DispatchQueue(label: "com.local.wififorwarder.serial", qos: .userInitiated)
     private var logURL: URL?
     private var logHandle: FileHandle?
+    private let maxLogFileSize: UInt64 = 100 * 1024 * 1024
 
     init() { refreshPorts() }
 
@@ -309,7 +370,22 @@ final class SerialModel: ObservableObject {
         receiveText += rendered
         if receiveText.count > 500_000 { receiveText = String(receiveText.suffix(350_000)) }
         if let logHandle, let bytes = rendered.data(using: .utf8) {
-            try? logHandle.write(contentsOf: bytes)
+            do {
+                let currentSize = try logHandle.offset()
+                guard currentSize + UInt64(bytes.count) <= maxLogFileSize else {
+                    try logHandle.close()
+                    self.logHandle = nil
+                    self.logURL = nil
+                    status = "日志文件达到 100 MiB，已停止保存；后续内容仍显示在窗口中。"
+                    return
+                }
+                try logHandle.write(contentsOf: bytes)
+            } catch {
+                try? logHandle.close()
+                self.logHandle = nil
+                self.logURL = nil
+                status = "日志文件写入失败，已停止保存：\(error.localizedDescription)"
+            }
         }
     }
 
