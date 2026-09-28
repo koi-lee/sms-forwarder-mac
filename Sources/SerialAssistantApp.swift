@@ -211,20 +211,71 @@ enum SMSDecoder {
         let time = String(format: "20%02d/%02d/%02d %02d:%02d:%02d", date[0], date[1], date[2], date[3], date[4], date[5])
         i += 7
         let length = Int(b[i]); i += 1
-        // This device's observed SMS uses UCS-2. Other encodings stay explicit.
-        guard dcs == 8 else {
+        guard dcs == 0 || dcs == 8 else {
             return SMSRecord(sender: sender, time: time, body: "此短信编码暂不支持（DCS=\(dcs)），请查看原始日志")
         }
-        guard i + length <= b.count else { return nil }
-        var payload = Array(b[i..<i+length])
+        // GSM-7 UDL counts septets; UCS-2 UDL counts octets.
+        let byteCount = dcs == 0 ? (length * 7 + 7) / 8 : length
+        guard i + byteCount <= b.count else { return nil }
+        let payload = Array(b[i..<i+byteCount])
+        var headerBytes = 0
         var prefix = ""
         if flags & 0x40 != 0 {
-            guard let h = payload.first, Int(h)+1 <= payload.count else { return nil }
-            payload.removeFirst(Int(h)+1)
-            prefix = "[分段短信，当前片段] "
+            guard let h = payload.first, Int(h) + 1 <= payload.count else { return nil }
+            headerBytes = Int(h) + 1
+            var cursor = 1
+            while cursor < headerBytes {
+                guard cursor + 2 <= headerBytes else { return nil }
+                let identifier = payload[cursor]
+                let size = Int(payload[cursor + 1])
+                guard cursor + 2 + size <= headerBytes else { return nil }
+                // National language shifts need their own tables; never silently decode them as default.
+                if dcs == 0 && (identifier == 0x24 || identifier == 0x25) {
+                    return SMSRecord(sender: sender, time: time, body: "此短信语言移位表暂不支持，请查看原始日志")
+                }
+                if identifier == 0x00 || identifier == 0x08 { prefix = "[分段短信，当前片段] " }
+                cursor += 2 + size
+            }
         }
-        guard payload.count % 2 == 0, let body = String(data: Data(payload), encoding: .utf16BigEndian) else { return nil }
+        let body: String
+        if dcs == 0 {
+            let headerSeptets = (headerBytes * 8 + 6) / 7
+            guard headerSeptets <= length,
+                  let decoded = decodeGSM7(payload, startBit: headerSeptets * 7, count: length - headerSeptets) else { return nil }
+            body = decoded
+        } else {
+            let text = Array(payload.dropFirst(headerBytes))
+            guard text.count % 2 == 0, let decoded = String(data: Data(text), encoding: .utf16BigEndian) else { return nil }
+            body = decoded
+        }
         return SMSRecord(sender: sender, time: time, body: prefix + body)
+    }
+
+    private static func decodeGSM7(_ bytes: [UInt8], startBit: Int, count: Int) -> String? {
+        // 3GPP TS 23.038 default alphabet, indexed by unpacked seven-bit value.
+        let alphabet = Array("@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞ\u{001B}ÆæßÉ !\"#¤%&'()*+,-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà".unicodeScalars)
+        let extensionTable: [UInt8: String] = [0x0A: "\u{000C}", 0x14: "^", 0x28: "{", 0x29: "}", 0x2F: "\\", 0x3C: "[", 0x3D: "~", 0x3E: "]", 0x40: "|", 0x65: "€"]
+        guard startBit + count * 7 <= bytes.count * 8 else { return nil }
+        var result = ""
+        var escaped = false
+        for position in 0..<count {
+            let bit = startBit + position * 7
+            let index = bit / 8
+            let shift = bit % 8
+            var value = UInt16(bytes[index]) >> shift
+            if shift > 1 { value |= UInt16(bytes[index + 1]) << (8 - shift) }
+            let code = UInt8(value & 0x7F)
+            if escaped {
+                guard let character = extensionTable[code] else { return nil }
+                result += character
+                escaped = false
+            } else if code == 0x1B {
+                escaped = true
+            } else {
+                result.unicodeScalars.append(alphabet[Int(code)])
+            }
+        }
+        return escaped ? nil : result
     }
 }
 
