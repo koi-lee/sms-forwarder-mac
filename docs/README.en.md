@@ -8,7 +8,7 @@ A native macOS serial monitor for SMS forwarding devices. Connect via USB to ins
 
 ## Status and language support
 
-Version 0.1.0 (Build 5) is a preview. Download the Developer ID signed and Apple-notarized DMG from [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.5). The code uses the [MIT License](../LICENSE). Repository introductions are available in six languages; the app and detailed guides are in Chinese.
+Version 0.1.0 (Build 6) is a preview. Download the Developer ID signed and Apple-notarized DMG from [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6). The code uses the [MIT License](../LICENSE). Repository introductions are available in six languages; the app and detailed guides are in Chinese.
 
 ## Windows users
 
@@ -27,7 +27,7 @@ The Windows tool is supplied and maintained by the device provider. This project
 
 Requires macOS 13+, a data-capable USB cable and a serial port recognized by macOS. Uses 8-N-1; supported baud rates: 9600, 19200, 38400, 57600, 115200, 230400.
 
-Hardware checks cover the current ML307-series WIFI forwarding device, not every ML307A/ML307C firmware. Structured parsing supports SMS-DELIVER PDU with numeric senders and UCS-2. Multipart SMS messages remain separate. Calls appear in raw logs, without dedicated missed-call cards.
+Hardware checks cover the current ML307-series WIFI forwarding device, not every ML307A/ML307C firmware. Structured parsing supports SMS-DELIVER PDU with numeric senders and GSM 7-bit (DCS=0) or UCS-2 (DCS=8). Multipart SMS messages remain separate. Calls appear in raw logs, without dedicated missed-call cards.
 
 Push status is associated with logs received within the next 60 seconds. Concurrent messages or channels can require manual verification. A success label does not prove receipt on the phone. Bark was verified with the current device; other channel tutorials are reference material. Firmware forwards notifications independently of this app.
 
@@ -43,7 +43,7 @@ SMS cards exist only in memory for the current session. Save logs explicitly if 
 
 ## Build and documentation
 
-Run from the repository root with Xcode and the macOS SDK installed. The default build uses ad-hoc signing. Developer ID signing and Apple notarization are separate steps; the published Build 5 package is notarized.
+Run from the repository root with Xcode and the macOS SDK installed. The default build uses ad-hoc signing. Developer ID signing and Apple notarization are separate steps; the published Build 6 package is notarized.
 
 ```sh
 ./build-app.sh

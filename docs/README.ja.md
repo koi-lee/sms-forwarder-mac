@@ -8,7 +8,7 @@ SMS 転送デバイス向けの macOS ネイティブ・シリアルモニター
 
 ## 公開状況と言語
 
-0.1.0 (Build 5) はプレビュー版です。[GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.5) から Developer ID 署名・Apple 公証済みの DMG を入手できます。コードは [MIT License](../LICENSE)。紹介文は6言語、アプリ画面と詳細ガイドは中国語です。
+0.1.0 (Build 6) はプレビュー版です。[GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6) から Developer ID 署名・Apple 公証済みの DMG を入手できます。コードは [MIT License](../LICENSE)。紹介文は6言語、アプリ画面と詳細ガイドは中国語です。
 
 ## Windows をお使いの方へ
 
@@ -27,7 +27,7 @@ Windows 用ツールは機器提供元が提供・管理しています。本プ
 
 macOS 13 以降、データ転送対応の USB ケーブル、macOS が認識するシリアルポートが必要です。通信設定は 8-N-1、対応ボーレートは 9600、19200、38400、57600、115200、230400 です。
 
-実機確認の対象は今回使用した ML307 シリーズの WIFI 転送デバイスです。ML307A / ML307C の全ファームウェアを確認したわけではありません。SMS 解析は、数字の送信元番号を持つ UCS-2 の SMS-DELIVER PDU に対応します。長文 SMS の分割部分は結合しません。着信は生ログで確認でき、不在着信専用カードはありません。
+実機確認の対象は今回使用した ML307 シリーズの WIFI 転送デバイスです。ML307A / ML307C の全ファームウェアを確認したわけではありません。SMS 解析は、数字の送信元番号を持つ GSM 7-bit（DCS=0）または UCS-2（DCS=8）の SMS-DELIVER PDU に対応します。長文 SMS の分割部分は結合しません。着信は生ログで確認でき、不在着信専用カードはありません。
 
 通知結果は、その後 60 秒以内のログと関連付けます。SMS や通知チャンネルが同時に動く場合は、生ログで確認してください。「成功」の表示だけではスマートフォンへの到着を証明できません。Bark は今回の実機で受信を確認済みです。他のチャンネルの説明は参考資料です。通知の転送はデバイスのファームウェアが独立して行います。
 
@@ -43,7 +43,7 @@ SMS カードは起動中のメモリにのみ保存されます。必要なロ�
 
 ## ビルドと資料
 
-Xcode と macOS SDK をインストールし、リポジトリのルートで実行してください。既定のビルドは ad-hoc 署名です。Developer ID 署名と Apple の公証は別の手順で、配布する Build 5 は公証済みです。
+Xcode と macOS SDK をインストールし、リポジトリのルートで実行してください。既定のビルドは ad-hoc 署名です。Developer ID 署名と Apple の公証は別の手順で、配布する Build 6 は公証済みです。
 
 ```sh
 ./build-app.sh

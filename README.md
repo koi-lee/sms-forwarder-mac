@@ -12,7 +12,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 ## 当前状态
 
-0.1.0 (Build 5) 预览版，项目代码采用 [MIT License](LICENSE)。安装包使用 Developer ID 签名并完成 Apple 公证，通过 [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.5) 分发，无需 App Store。
+0.1.0 (Build 6) 预览版，项目代码采用 [MIT License](LICENSE)。安装包使用 Developer ID 签名并完成 Apple 公证，通过 [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6) 分发，无需 App Store。
 
 面向使用 WIFI 转发宝、短信宝类设备的 Mac 用户。短信结构化解析按本次设备固件的串口输出适配；不保证所有同类硬件兼容。
 
@@ -20,7 +20,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 你需要一台 Mac、一台有收短信功能的转发设备、已启用短信服务的 SIM 卡，以及支持数据传输的 USB 线。本软件用于查看设备输出，不能让没有短信硬件的 Mac 独立接收短信。
 
-1. [下载并安装](docs/下载安装.md)：选择 Build 5 的 DMG；普通使用无需 Xcode。
+1. [下载并安装](docs/下载安装.md)：选择 Build 6 的 DMG；普通使用无需 Xcode。
 2. [按步骤连接并验证第一条短信](docs/快速上手.md)：包括如何认串口、短信发给谁、在哪里看结果。
 3. 遇到问题按[使用与排查](docs/使用与排查.md)中的现象定位。
 
@@ -43,7 +43,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 | 串口 | macOS 已识别的 `/dev/cu.*`，固定 8 数据位、无校验、1 停止位 |
 | 波特率 | 9600、19200、38400、57600、115200、230400 |
 | 设备实测 | 本次 ML307 系列配套 WIFI 转发宝；未逐型号验证 ML307A / ML307C 全部固件 |
-| 短信解析 | 数字发送号码的 SMS-DELIVER PDU，UCS-2；其他编码显示限制提示 |
+| 短信解析 | 数字发送号码的 SMS-DELIVER PDU，GSM 7-bit（DCS=0）及 UCS-2（DCS=8）；其他编码及语言移位表显示限制提示 |
 | 长短信 | 分段展示，不自动合并 |
 | 来电 | 在原始日志中查看；暂无独立未接来电卡片 |
 | 推送状态 | 关联随后 60 秒内相关日志，密集短信、多通道并发时需核对原始日志 |

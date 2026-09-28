@@ -8,7 +8,7 @@ Un monitor de puerto serie nativo para macOS, pensado para dispositivos de reenv
 
 ## Disponibilidad e idiomas
 
-La versión 0.1.0 (Build 5) es preliminar. El DMG firmado con Developer ID y notarizado por Apple se descarga desde [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.5). El código usa [MIT](../LICENSE). Las presentaciones están en seis idiomas; la aplicación y las guías detalladas están en chino.
+La versión 0.1.0 (Build 6) es preliminar. El DMG firmado con Developer ID y notarizado por Apple se descarga desde [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6). El código usa [MIT](../LICENSE). Las presentaciones están en seis idiomas; la aplicación y las guías detalladas están en chino.
 
 ## Para usuarios de Windows
 
@@ -27,7 +27,7 @@ El proveedor del dispositivo ofrece y mantiene esta herramienta para Windows. Es
 
 Se necesita macOS 13 o posterior, un cable USB de datos y un puerto serie reconocido por macOS. Configuración 8-N-1; velocidades disponibles: 9600, 19200, 38400, 57600, 115200 y 230400 baudios.
 
-La comprobación con hardware se limita al dispositivo WIFI de la serie ML307 utilizado aquí; no abarca todos los firmwares ML307A / ML307C. El análisis estructurado admite PDU SMS-DELIVER con remitentes numéricos y codificación UCS-2. Los segmentos de SMS largos no se unen. Las llamadas aparecen en los registros sin procesar, sin tarjetas específicas de llamadas perdidas.
+La comprobación con hardware se limita al dispositivo WIFI de la serie ML307 utilizado aquí; no abarca todos los firmwares ML307A / ML307C. El análisis estructurado admite PDU SMS-DELIVER con remitentes numéricos y codificación GSM 7-bit (DCS=0) o UCS-2 (DCS=8). Los segmentos de SMS largos no se unen. Las llamadas aparecen en los registros sin procesar, sin tarjetas específicas de llamadas perdidas.
 
 El estado de la notificación se relaciona con los registros de los 60 segundos siguientes. Si coinciden varios mensajes o canales, puede ser necesario revisar los registros manualmente. Un estado de éxito no demuestra la recepción en el teléfono. Bark se ha comprobado con el dispositivo actual; los tutoriales de otros canales son material de referencia. El firmware reenvía las notificaciones de forma independiente de esta aplicación.
 
@@ -43,7 +43,7 @@ Las tarjetas de SMS solo se conservan en memoria durante la sesión. Guarda los 
 
 ## Compilación y documentación
 
-Ejecuta los comandos desde la raíz del repositorio con Xcode y el SDK de macOS instalados. La compilación predeterminada usa firma ad hoc. La firma Developer ID y la notarización de Apple son pasos distintos; el paquete Build 5 publicado está notarizado.
+Ejecuta los comandos desde la raíz del repositorio con Xcode y el SDK de macOS instalados. La compilación predeterminada usa firma ad hoc. La firma Developer ID y la notarización de Apple son pasos distintos; el paquete Build 6 publicado está notarizado.
 
 ```sh
 ./build-app.sh
