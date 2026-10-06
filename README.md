@@ -14,6 +14,8 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 0.1.0 (Build 7) 预览版，项目代码采用 [MIT License](LICENSE)。安装包使用 Developer ID 签名并完成 Apple 公证，通过 [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.7) 分发，无需 App Store。
 
+[默认最新版下载](https://github.com/koi-lee/sms-forwarder-mac/releases/latest)现为 Build 7；已安装版的两条已知设备测试短信均完成 Mac 正文核对与用户确认手机 Bark 到达。
+
 面向使用 WIFI 转发宝、短信宝类设备的 Mac 用户。短信结构化解析按本次设备固件的串口输出适配；不保证所有同类硬件兼容。
 
 ## 开始使用
