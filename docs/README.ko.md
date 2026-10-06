@@ -8,7 +8,7 @@ SMS 전달 장치를 위한 macOS 네이티브 시리얼 모니터입니다. USB
 
 ## 배포 상태와 언어
 
-0.1.0 (Build 6)은 미리보기 버전입니다. [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6)에서 Developer ID 서명 및 Apple 공증을 완료한 DMG를 다운로드할 수 있습니다. 코드는 [MIT License](../LICENSE)를 사용합니다. 소개 문서는 6개 언어이며 앱과 상세 안내는 중국어입니다.
+0.1.0 (Build 7)은 미리보기 버전입니다. [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.7)에서 Developer ID 서명 및 Apple 공증을 완료한 DMG를 다운로드할 수 있습니다. 코드는 [MIT License](../LICENSE)를 사용합니다. 소개 문서는 6개 언어이며 앱과 상세 안내는 중국어입니다.
 
 ## Windows 사용자 안내
 
@@ -20,7 +20,7 @@ Windows 도구는 기기 제공업체가 제공하고 관리합니다. 이 프�
 
 - 시리얼 포트를 검색하고 USB 정보를 기반으로 ESP32일 가능성이 있는 장치를 표시합니다. 이 표시는 호환성을 보장하지 않습니다.
 - 실시간 로그 보기, 최신 로그 자동 따라가기, 글자 크기 조절, 선택적인 파일 저장.
-- 지원되는 최근 SMS 100건 표시: 발신 번호, 본문, 발신 시각, 장치 IP 주소, 관련 알림 로그. 최신 SMS 자동 따라가기와 최신 항목으로 이동을 지원합니다.
+- 지원되는 최근 SMS 100건 표시: 발신 번호, 본문, 시간대 변환 전 PDU 시각, Mac 관찰 시각, 장치 IP 주소, 관련 알림 로그. 장치에서 보고한 PDU 오류도 카드에 표시합니다.
 - 텍스트 또는 HEX 바이트 수동 전송과 선택적인 CRLF 추가. AT 명령을 자동으로 보내지 않습니다.
 
 ## 요구 사항과 제한
@@ -43,7 +43,7 @@ SMS 카드는 앱 실행 중 메모리에만 보관됩니다. 필요한 로그�
 
 ## 빌드 및 문서
 
-Xcode와 macOS SDK를 설치한 뒤 저장소 루트에서 실행하세요. 기본 빌드는 ad-hoc 서명을 사용합니다. Developer ID 서명과 Apple 공증은 별도 단계이며 배포되는 Build 6은 공증을 완료했습니다.
+Xcode와 macOS SDK를 설치한 뒤 저장소 루트에서 실행하세요. 기본 빌드는 ad-hoc 서명을 사용합니다. Developer ID 서명과 Apple 공증은 별도 단계이며 배포되는 Build 7은 공증을 완료했습니다.
 
 ```sh
 ./build-app.sh

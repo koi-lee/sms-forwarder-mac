@@ -8,7 +8,7 @@ A native macOS serial monitor for SMS forwarding devices. Connect via USB to ins
 
 ## Status and language support
 
-Version 0.1.0 (Build 6) is a preview. Download the Developer ID signed and Apple-notarized DMG from [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6). The code uses the [MIT License](../LICENSE). Repository introductions are available in six languages; the app and detailed guides are in Chinese.
+Version 0.1.0 (Build 7) is a preview. Download the Developer ID signed and Apple-notarized DMG from [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.7). The code uses the [MIT License](../LICENSE). Repository introductions are available in six languages; the app and detailed guides are in Chinese.
 
 ## Windows users
 
@@ -20,7 +20,7 @@ The Windows tool is supplied and maintained by the device provider. This project
 
 - Discover serial ports, with a USB-based hint for possible ESP32 devices. The hint does not guarantee compatibility.
 - View live logs, follow the latest entries, change font size and optionally save logs to a file.
-- Display the latest 100 supported SMS records: sender, message, sending time, device IP and related push logs. Follow new messages or return to the latest one.
+- Display the latest 100 supported SMS records: sender, message, raw PDU time, Mac observation time, device IP and related push logs. PDU time is shown without time-zone conversion; device-reported PDU errors appear on the card.
 - Manually send text or HEX bytes with optional CRLF. No AT commands are sent automatically.
 
 ## Requirements and limitations
@@ -43,7 +43,7 @@ SMS cards exist only in memory for the current session. Save logs explicitly if 
 
 ## Build and documentation
 
-Run from the repository root with Xcode and the macOS SDK installed. The default build uses ad-hoc signing. Developer ID signing and Apple notarization are separate steps; the published Build 6 package is notarized.
+Run from the repository root with Xcode and the macOS SDK installed. The default build uses ad-hoc signing. Developer ID signing and Apple notarization are separate steps; the published Build 7 package is notarized.
 
 ```sh
 ./build-app.sh

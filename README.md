@@ -12,7 +12,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 ## 当前状态
 
-0.1.0 (Build 6) 预览版，项目代码采用 [MIT License](LICENSE)。安装包使用 Developer ID 签名并完成 Apple 公证，通过 [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6) 分发，无需 App Store。
+0.1.0 (Build 7) 预览版，项目代码采用 [MIT License](LICENSE)。安装包使用 Developer ID 签名并完成 Apple 公证，通过 [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.7) 分发，无需 App Store。
 
 面向使用 WIFI 转发宝、短信宝类设备的 Mac 用户。短信结构化解析按本次设备固件的串口输出适配；不保证所有同类硬件兼容。
 
@@ -20,7 +20,7 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 你需要一台 Mac、一台有收短信功能的转发设备、已启用短信服务的 SIM 卡，以及支持数据传输的 USB 线。本软件用于查看设备输出，不能让没有短信硬件的 Mac 独立接收短信。
 
-1. [下载并安装](docs/下载安装.md)：选择 Build 6 的 DMG；普通使用无需 Xcode。
+1. [下载并安装](docs/下载安装.md)：选择 Build 7 的 DMG；普通使用无需 Xcode。
 2. [按步骤连接并验证第一条短信](docs/快速上手.md)：包括如何认串口、短信发给谁、在哪里看结果。
 3. 遇到问题按[使用与排查](docs/使用与排查.md)中的现象定位。
 
@@ -28,9 +28,11 @@ Native macOS serial monitor for SMS forwarding devices. Inspect supported SMS re
 
 ## 能做什么
 
+- 从主窗口与帮助菜单打开星岸 AI 使用指南、项目 GitHub、支持邮箱与作者 X；所有网页只在主动点击后打开。
+
 - 扫描 macOS 串口，按 USB 信息提示“可能是短信宝（ESP32）”，保留完整端口名供核对。
 - 连接后查看原始日志，自动跟随、调整字号，手动选择文件保存日志；单个日志文件达到 100 MiB 后自动停止追加，窗口仍继续显示。
-- 从支持的 `+CMT` / PDU 输出整理发送号码、短信正文、短信发送时间、设备网络地址和推送日志。
+- 从支持的 `+CMT` / PDU 输出整理发送号码、短信正文、PDU 原始时间、Mac 助手观察时间、设备网络地址和推送日志；设备报告 PDU 解析失败时在卡片中标明。
 - 最近 100 条短信独立显示；默认跟随最新短信，也可点击“回到最新”。
 - 手动发送文本或 HEX 字节，按需追加 CRLF；不会自动发送 AT 命令。
 - 从菜单栏“帮助 → 请我喝杯咖啡”可查看作者提供的支付宝与微信自愿打赏码；扫码付款需使用另一部手机。
@@ -81,6 +83,9 @@ open dist/WIFI转发宝串口助手.app
 
 ## 联系与来源
 
+- 产品主页与下载：[WIFI 转发宝串口助手](https://www.starshoreai.com/tools/sms-forwarder-mac)
+- 作者动态：[X @koi_ai_notes](https://x.com/koi_ai_notes)
+- 商家试用：[交付说明](docs/商家试用交付说明.md)
 - 作者：[koi-lee](https://github.com/koi-lee)
 - 星岸 AI：[starshoreai.com](https://www.starshoreai.com)
 - 产品反馈：[星岸 AI 反馈入口](https://www.starshoreai.com/feedback)

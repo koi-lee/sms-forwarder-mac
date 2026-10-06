@@ -24,7 +24,7 @@ func pack(_ codes: [UInt8], header: [UInt8] = []) -> (bytes: [UInt8], count: Int
     return (bytes, skip + codes.count)
 }
 var passed = 0
-func check(_ actual: String?, _ expected: String?, _ name: String) {
+func check<T: Equatable>(_ actual: T?, _ expected: T?, _ name: String) {
     guard actual == expected else { fatalError("Failed: \(name)") }
     passed += 1
 }
@@ -65,6 +65,12 @@ check(SMSDecoder.decode(pdu([], length: 1))?.body, nil, "truncated user data")
 check(SMSDecoder.decode(pdu([5,0], length: 2, udhi: true))?.body, nil, "truncated UDH")
 let shift = pack([65], header: [3,0x24,1,1])
 check(SMSDecoder.decode(pdu(shift.bytes, length: shift.count, udhi: true))?.body, "此短信语言移位表暂不支持，请查看原始日志", "national language shift explicit")
+check(SMSCardOutcome.classify("等待推送日志"), .waiting, "SMS card waiting state")
+check(SMSCardOutcome.classify("PDU解析失败"), .deviceDecodeFailure, "device PDU failure state")
+check(SMSCardOutcome.classify("PDU解析失败\n推送成功"), .needsReview, "conflicting PDU and push evidence")
+check(SMSCardOutcome.classify("推送成功"), .pushSuccess, "SMS card push success state")
+check(SMSCardOutcome.classify("推送失败"), .pushFailure, "SMS card push failure state")
+check(SMSCardOutcome.classify("推送成功\n推送失败"), .partialFailure, "multiple channel result state")
 print("Decoder regression checks passed: \(passed)")
 '''
 with tempfile.TemporaryDirectory(prefix='sms-decoder-') as directory:

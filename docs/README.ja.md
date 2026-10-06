@@ -8,7 +8,7 @@ SMS 転送デバイス向けの macOS ネイティブ・シリアルモニター
 
 ## 公開状況と言語
 
-0.1.0 (Build 6) はプレビュー版です。[GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6) から Developer ID 署名・Apple 公証済みの DMG を入手できます。コードは [MIT License](../LICENSE)。紹介文は6言語、アプリ画面と詳細ガイドは中国語です。
+0.1.0 (Build 7) はプレビュー版です。[GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.7) から Developer ID 署名・Apple 公証済みの DMG を入手できます。コードは [MIT License](../LICENSE)。紹介文は6言語、アプリ画面と詳細ガイドは中国語です。
 
 ## Windows をお使いの方へ
 
@@ -20,7 +20,7 @@ Windows 用ツールは機器提供元が提供・管理しています。本プ
 
 - シリアルポートを検出し、USB 情報から ESP32 の可能性があるデバイスを表示します。この表示は互換性を保証しません。
 - ログのリアルタイム表示、最新ログへの追従、文字サイズの調整、任意のファイル保存。
-- 対応する SMS を直近 100 件まで表示。送信元番号、本文、送信日時、デバイスの IP アドレス、関連する通知ログを確認できます。最新の SMS への自動追従と移動に対応します。
+- 対応する SMS を直近 100 件まで表示。送信元番号、本文、PDU の時刻（タイムゾーン未換算）、Mac での観測時刻、デバイス IP、関連ログを確認できます。デバイスが報告した PDU エラーもカードに表示します。
 - テキストまたは HEX バイトを手動送信し、必要に応じて CRLF を追加できます。AT コマンドは自動送信しません。
 
 ## 動作条件と制限
@@ -43,7 +43,7 @@ SMS カードは起動中のメモリにのみ保存されます。必要なロ�
 
 ## ビルドと資料
 
-Xcode と macOS SDK をインストールし、リポジトリのルートで実行してください。既定のビルドは ad-hoc 署名です。Developer ID 署名と Apple の公証は別の手順で、配布する Build 6 は公証済みです。
+Xcode と macOS SDK をインストールし、リポジトリのルートで実行してください。既定のビルドは ad-hoc 署名です。Developer ID 署名と Apple の公証は別の手順で、配布する Build 7 は公証済みです。
 
 ```sh
 ./build-app.sh

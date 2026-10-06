@@ -11,10 +11,13 @@ elif [[ -n "${1:-}" ]]; then
   echo 'Usage: ./build-app.sh [--developer-id]' >&2
   exit 2
 fi
+# macOS ships Bash 3.2, where expanding an empty array under `set -u` fails.
+set +u
 xcodebuild -project "$ROOT/WIFIForwarderSerialAssistant.xcodeproj" \
   -scheme WIFIForwarderSerialAssistant -configuration Release -sdk macosx \
   -derivedDataPath "$ROOT/.build/DerivedData" ARCHS='arm64 x86_64' ONLY_ACTIVE_ARCH=NO \
   CODE_SIGN_IDENTITY="$IDENTITY" CODE_SIGN_STYLE=Manual "${EXTRA[@]}" build
+set -u
 mkdir -p "$ROOT/dist"
 APP="$ROOT/dist/WIFI转发宝串口助手.app"
 if [[ -e "$APP" ]]; then

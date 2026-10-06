@@ -1,15 +1,19 @@
-SMS Forwarder Mac 0.1.0（Build 6）预览版
+SMS Forwarder Mac 0.1.0（Build 7）预览版
 
-已使用 Developer ID 签名并完成 Apple 公证。
+本项目的公开发布流程要求 App 与 DMG 均完成 Developer ID 签名和 Apple 公证后才提供下载。请从下方 Build 7 发布页获取并核对校验值。
 要求 macOS 13 或更新版本；Apple Silicon / Intel 双架构，Intel 尚未真机验收。
 
-1. 先退出旧应用并保存日志，再将 WIFI转发宝串口助手.app 拖到 Applications。
-2. 从“应用程序”打开，关于窗口应显示 0.1.0 (6)。首次可能出现互联网下载确认。
+1. 保存旧应用中需要的日志并退出，再将 WIFI转发宝串口助手.app 拖到 Applications。
+2. 从“应用程序”打开，关于窗口应显示 0.1.0 (7)。首次可能出现互联网下载确认。
 3. 阅读 INSTALL.zh-CN.md 和 QUICKSTART.zh-CN.md；Markdown 文件可用文本编辑器打开。
+若提示应用损坏或将损坏电脑，请停止操作，从本项目重新下载并核对校验值。不要关闭系统安全保护。
 
-若提示应用损坏或将损坏电脑，请停止操作并从官方 Release 重新下载、核对校验值。不要关闭系统安全保护。
+通过 USB 数据线连接已适配设备，按其说明选择串口和波特率。测试短信从手机发往设备 SIM；“手动发送”用于串口指令，不是短信输入框。短信接收和网络推送由设备完成，Mac 助手只读取显示日志。日志可能含号码、正文和密钥，分享前请脱敏。
 
-通过 USB 数据线连接设备，按其说明选择端口和波特率。测试短信从手机发往设备 SIM 卡；助手“手动发送”框用于串口指令，不是短信测试输入框。
-日志可能含手机号、正文和密钥，分享前请脱敏。
+版本下载：https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.7
+官网与教程：https://www.starshoreai.com/tools/sms-forwarder-mac
+项目源码：https://github.com/koi-lee/sms-forwarder-mac
+作者：Koi / 星岸 AI
+X：https://x.com/koi_ai_notes
 支持：service@starshoreai.com
-项目：https://github.com/koi-lee/sms-forwarder-mac
+第三方免费开源（MIT）工具，与硬件商家、运营商及 Bark 官方无隶属关系。

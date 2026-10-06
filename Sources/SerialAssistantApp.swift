@@ -8,6 +8,25 @@ import UniformTypeIdentifiers
 struct WiFiForwarderSerialApp: App {
     @State private var showingSupport = false
 
+    private var aboutCredits: NSAttributedString {
+        let text = NSMutableAttributedString(string: "星岸 AI · SMS Forwarder Mac\n作者：Koi · 免费开源（MIT）\n")
+        let links = [
+            ("下载与使用指南 · 星岸 AI", "https://www.starshoreai.com/tools/sms-forwarder-mac"),
+            ("项目源码与反馈 · GitHub", "https://github.com/koi-lee/sms-forwarder-mac"),
+            ("X · @koi_ai_notes", "https://x.com/koi_ai_notes"),
+            ("service@starshoreai.com", "mailto:service@starshoreai.com")
+        ]
+        for (label, address) in links {
+            text.append(NSAttributedString(string: label + "\n", attributes: [.link: URL(string: address)!]))
+        }
+        text.append(NSAttributedString(string: "第三方工具，仅支持已适配固件。\n原始日志可能包含隐私信息。"))
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        paragraph.lineSpacing = 3
+        text.addAttributes([.font: NSFont.systemFont(ofSize: 12), .paragraphStyle: paragraph], range: NSRange(location: 0, length: text.length))
+        return text
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -20,16 +39,18 @@ struct WiFiForwarderSerialApp: App {
         .commands {
             CommandGroup(replacing: .newItem) { }
             CommandGroup(replacing: .help) {
-                Button("请我喝杯咖啡…") { showingSupport = true }
+                Link("下载与使用指南 · 星岸 AI", destination: URL(string: "https://www.starshoreai.com/tools/sms-forwarder-mac")!)
+                Link("项目源码与反馈 · GitHub", destination: URL(string: "https://github.com/koi-lee/sms-forwarder-mac")!)
                 Link("联系支持：service@starshoreai.com", destination: URL(string: "mailto:service@starshoreai.com")!)
-                Link("作者 GitHub 主页", destination: URL(string: "https://github.com/koi-lee")!)
-                Link("使用教程（飞书）", destination: URL(string: "https://my.feishu.cn/docx/Vzl2dnYp8oK08lxSAUhcU9kInpf")!)
+                Link("作者动态 · X @koi_ai_notes", destination: URL(string: "https://x.com/koi_ai_notes")!)
+                Divider()
+                Button("请我喝杯咖啡…") { showingSupport = true }
             }
             CommandGroup(replacing: .appInfo) {
                 Button("关于 WIFI 转发宝串口助手") {
                     NSApplication.shared.orderFrontStandardAboutPanel(options: [
                         .applicationName: "WIFI 转发宝串口助手",
-                        .credits: NSAttributedString(string: "星岸 AI · SMS Forwarder Mac\n支持邮箱：service@starshoreai.com\nGitHub：https://github.com/koi-lee\n仅支持已适配固件；原始日志可能包含隐私信息。")
+                        .credits: aboutCredits
                     ])
                 }
             }
@@ -180,8 +201,30 @@ struct SMSRecord: Identifiable {
     var sender: String
     var time: String
     var body: String
+    var observedAt = "未记录"
     var address = "未获取"
     var result = "等待推送日志"
+}
+
+enum SMSCardOutcome: Equatable {
+    case waiting
+    case pushSuccess
+    case pushFailure
+    case partialFailure
+    case deviceDecodeFailure
+    case needsReview
+
+    static func classify(_ result: String) -> SMSCardOutcome {
+        let success = result.contains("推送成功")
+        let failure = result.contains("推送失败")
+        let deviceDecodeFailure = result.contains("PDU解析失败")
+        if success && failure { return .partialFailure }
+        if deviceDecodeFailure && (success || failure) { return .needsReview }
+        if deviceDecodeFailure { return .deviceDecodeFailure }
+        if failure { return .pushFailure }
+        if success { return .pushSuccess }
+        return .waiting
+    }
 }
 
 enum SMSDecoder {
@@ -307,7 +350,7 @@ final class SerialModel: ObservableObject {
     private var activeSMS: UUID?
     private var activeTime = Date.distantPast
 
-    private func inspect(_ data: Data) {
+    private func inspect(_ data: Data, observedAt: Date) {
         pendingLine.append(data)
         while let end = pendingLine.firstIndex(of: 10) {
             let line = String(decoding: pendingLine[..<end], as: UTF8.self).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -322,17 +365,18 @@ final class SerialModel: ObservableObject {
                 let hex = line.replacingOccurrences(of: "Debug>", with: "").trimmingCharacters(in: .whitespaces)
                 if !hex.isEmpty && hex.allSatisfy({ $0.isHexDigit }) {
                     var record = SMSDecoder.decode(hex) ?? SMSRecord(sender: "未解析", time: "未知", body: "短信数据解析失败，请查看原始日志")
+                    record.observedAt = DateFormatter.localizedString(from: observedAt, dateStyle: .none, timeStyle: .medium)
                     record.address = deviceAddress
                     messages.insert(record, at: 0)
                     if messages.count > 100 { messages.removeLast() }
-                    activeSMS = record.id; activeTime = Date(); awaitingPDU = false
+                    activeSMS = record.id; activeTime = observedAt; awaitingPDU = false
                     continue
                 }
             }
             if line.contains("来电号码") { activeSMS = nil }
             if let id = activeSMS, Date().timeIntervalSince(activeTime) < 60,
                let index = messages.firstIndex(where: { $0.id == id }),
-               line.contains("推送成功") || line.contains("推送失败") || line.contains("开始发送到通道") || line.contains("HTTP响应码") {
+               line.contains("推送成功") || line.contains("推送失败") || line.contains("开始发送到通道") || line.contains("HTTP响应码") || line.contains("PDU解析失败") {
                 if messages[index].result == "等待推送日志" { messages[index].result = line }
                 else { messages[index].result += "\n" + line }
             }
@@ -402,17 +446,18 @@ final class SerialModel: ObservableObject {
             let count = Darwin.read(descriptor, &bytes, bytes.count)
             guard count > 0 else { return }
             let chunk = Data(bytes.prefix(count))
-            Task { @MainActor [weak self] in self?.appendReceived(chunk) }
+            let observedAt = Date()
+            Task { @MainActor [weak self] in self?.appendReceived(chunk, observedAt: observedAt) }
         }
         source.setCancelHandler { }
         readSource = source
         source.resume()
     }
 
-    private func appendReceived(_ data: Data) {
-        inspect(data)
+    private func appendReceived(_ data: Data, observedAt: Date) {
+        inspect(data, observedAt: observedAt)
         receivedBytes += data.count
-        let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .medium)
+        let timestamp = DateFormatter.localizedString(from: observedAt, dateStyle: .none, timeStyle: .medium)
         appendRendered(logRenderer.append(data, timestamp: timestamp))
     }
 
@@ -565,7 +610,7 @@ struct ContentView: View {
                     LazyVStack(alignment: .leading, spacing: 10) {
                         Color.clear.frame(height: 1).id("smsTop")
                         if model.messages.isEmpty {
-                            Text("等待新短信。接收后显示号码、短信发送时间、正文与推送结果。")
+                            Text("等待新短信。短信时间取自设备 PDU；助手观察时间取自 Mac 读取串口时。")
                                 .foregroundStyle(.secondary).padding(.vertical, 12)
                         }
                         ForEach(model.messages) { sms in
@@ -594,6 +639,8 @@ struct ContentView: View {
                 Text("WIFI 转发宝 · 串口助手").font(.title2.weight(.semibold))
                 Text("适用于 ML307A / ML307C 配套设备的串口日志与调试")
                     .font(.subheadline).foregroundStyle(.secondary)
+                Text("短信接收与 Bark 推送由设备完成；Mac 助手通过 USB 显示日志。")
+                    .font(.caption).foregroundStyle(.secondary)
             }
             Spacer()
             Label(model.connected ? "已连接" : "未连接", systemImage: model.connected ? "checkmark.circle.fill" : "circle")
@@ -709,6 +756,9 @@ struct ContentView: View {
             Text(model.status).lineLimit(1)
             Spacer()
             Text("串口同一时间只能被一个程序占用").foregroundStyle(.tertiary)
+            Divider().frame(height: 12)
+            Link("星岸 AI · 免费开源", destination: URL(string: "https://www.starshoreai.com/tools/sms-forwarder-mac")!)
+                .help("打开下载、使用指南与更多星岸 AI 产品")
         }
         .font(.caption).padding(.horizontal, 18).padding(.vertical, 9)
     }
@@ -719,14 +769,16 @@ private struct SMSCard: View {
     let fontSize: Double
     @State private var expanded = false
 
-    // Multiple channels can produce both outcomes; do not hide a failed channel.
+    // Multiple channels can produce both outcomes; do not hide conflicting evidence.
     private var outcome: (String, String, Color) {
-        let success = sms.result.contains("推送成功")
-        let failure = sms.result.contains("推送失败")
-        if success && failure { return ("部分推送失败", "exclamationmark.triangle.fill", .orange) }
-        if failure { return ("推送失败", "xmark.circle.fill", .red) }
-        if success { return ("推送成功", "checkmark.circle.fill", .green) }
-        return ("等待结果", "clock", .secondary)
+        switch SMSCardOutcome.classify(sms.result) {
+        case .partialFailure: return ("部分推送失败", "exclamationmark.triangle.fill", .orange)
+        case .pushFailure: return ("推送失败", "xmark.circle.fill", .red)
+        case .pushSuccess: return ("推送成功", "checkmark.circle.fill", .green)
+        case .deviceDecodeFailure: return ("设备解析失败", "exclamationmark.triangle.fill", .red)
+        case .needsReview: return ("结果需核对", "exclamationmark.triangle.fill", .orange)
+        case .waiting: return ("等待结果", "clock", .secondary)
+        }
     }
 
     var body: some View {
@@ -739,7 +791,8 @@ private struct SMSCard: View {
             Text("短信内容：" + sms.body)
                 .font(.system(size: fontSize + 2, weight: .medium))
                 .fixedSize(horizontal: false, vertical: true)
-            Text("短信发送时间：" + sms.time)
+            Text("短信时间（PDU 原值，时区未换算）：" + sms.time)
+            Text("助手观察时间（Mac）：" + sms.observedAt)
             Text("设备网络地址：" + sms.address).foregroundStyle(.secondary)
             DisclosureGroup("推送日志详情", isExpanded: $expanded) {
                 Text(sms.result).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 4)

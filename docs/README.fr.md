@@ -8,7 +8,7 @@ Un moniteur de port série natif pour macOS, destiné aux appareils de transfert
 
 ## Disponibilité et langues
 
-La version 0.1.0 (Build 6) est une préversion. Le DMG signé Developer ID et notarié par Apple est disponible sur [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.6). Le code est sous [licence MIT](../LICENSE). Les présentations sont en six langues ; l’application et les guides détaillés sont en chinois.
+La version 0.1.0 (Build 7) est une préversion. Le DMG signé Developer ID et notarié par Apple est disponible sur [GitHub Releases](https://github.com/koi-lee/sms-forwarder-mac/releases/tag/v0.1.0-preview.7). Le code est sous [licence MIT](../LICENSE). Les présentations sont en six langues ; l’application et les guides détaillés sont en chinois.
 
 ## Pour Windows
 
@@ -20,7 +20,7 @@ Cet outil Windows est fourni et maintenu par le fournisseur de l’appareil. Ce 
 
 - Détection des ports série et indication des appareils potentiellement équipés d’un ESP32 à partir des informations USB. Cette indication ne garantit pas la compatibilité.
 - Journaux en direct, suivi des dernières entrées, taille du texte réglable et enregistrement facultatif dans un fichier.
-- Affichage des 100 derniers SMS pris en charge : numéro de l’expéditeur, contenu, date d’envoi, adresse IP de l’appareil et journaux de notification associés. Suivi automatique et retour au SMS le plus récent.
+- Affichage des 100 derniers SMS pris en charge : numéro de l’expéditeur, contenu, heure PDU brute (sans conversion du fuseau horaire), heure d’observation par le Mac, adresse IP et journaux associés. Les erreurs PDU signalées par l’appareil apparaissent aussi sur la fiche.
 - Envoi manuel de texte ou d’octets HEX, avec ajout facultatif de CRLF. Aucune commande AT n’est envoyée automatiquement.
 
 ## Configuration requise et limites
@@ -43,7 +43,7 @@ Les fiches SMS restent uniquement en mémoire pendant la session. Enregistrez le
 
 ## Compilation et documentation
 
-Exécutez les commandes à la racine du dépôt après avoir installé Xcode et le SDK macOS. La compilation par défaut utilise une signature ad hoc. La signature Developer ID et la notarisation Apple sont deux étapes distinctes ; le paquet Build 6 distribué est notarié.
+Exécutez les commandes à la racine du dépôt après avoir installé Xcode et le SDK macOS. La compilation par défaut utilise une signature ad hoc. La signature Developer ID et la notarisation Apple sont deux étapes distinctes ; le paquet Build 7 distribué est notarié.
 
 ```sh
 ./build-app.sh
